@@ -20,8 +20,5 @@ for post in sumbissions:
 		download = download_location + filename
 		print("Downloading {:s} (from /r/{:s}) to {:s}".format(url, post.subreddit.display_name, download))
 		urllib.request.urlretrieve(url, download)
-		try:
-			os.system("gsettings set org.gnome.desktop.background picture-uri \"file:///" + download + "\"")
-			sys.exit(0)
-		except CalledProcessError as err:
-			print(err.cmd + " returned error code " + err.output)
+		os.system("gsettings set org.gnome.desktop.background picture-uri \"file:///" + download + "\"")
+		sys.exit(0)
