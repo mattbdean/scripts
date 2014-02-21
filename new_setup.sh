@@ -221,6 +221,7 @@ if [[ $(action "git") == "$TRUE" ]]; then
 	echo "Configuring Git"
 	git config --global color.ui true
 	git config --global core.editor vim
+	git config --global push.default simple
 	git config --global user.name "Matthew Dean"
 	echo "Enter your Git email:"
 	read email
