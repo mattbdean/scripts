@@ -1,11 +1,5 @@
 #!/bin/bash
 
-error() {
-	help
-	echo "Error: $1"
-	exit 1
-}
-
 help() {
 	cat << EOF
 andricon.sh v1.0
@@ -26,6 +20,12 @@ Examples:
 	# Resize an icon called my_icon.png, where the base directory is projects/MyApp/src/res/
 	andricon.sh my_icon.png MyApp/src/res
 EOF
+}
+
+error() {
+	help
+	echo "Error: $1"
+	exit 1
 }
 
 require_imagemagick() {
