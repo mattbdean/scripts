@@ -3,17 +3,14 @@
 ## Extracts all images from all PDFs in a given directory
 
 shopt -s nullglob
+DIR="$1"
+DIR=${DIR:-.} # Default value of current directory
+DIR=${DIR%/} # Remove leading forward slash
 
-cd $1
-
-for file in *.pdf; do
-	# Has extension ".pdf"
-
+for file in "$DIR"/*.pdf; do
+	# Operate on all PDFs
 	basename=$(echo `basename "$file" .pdf`)
-	echo $file
-	echo $basename
-	extr_pdf_imgs.sh "$file" "$basename" "$basename"
+	echo "Extracting images in \"$file\" to \"$DIR/$basename/\""
+	extr_pdf_imgs.sh "$file" "$basename" "$DIR/$basename"
 done
 
-# Move back up to the previous directory
-cd -

@@ -9,7 +9,7 @@ Extract PDF Images v1.0
 
 This is a simple script to extract images from a PDF and put them into a folder with a common base name.
 
-Usage: sh extract-pdf-images.sh <pdf-name> <directory-name> <base-name>
+Usage: sh extr_pdf_imgs.sh <pdf-name> <directory-name> <base-name>
 
 Arguments:
     <pdf-name>         The name of the PDF file to extract the images from

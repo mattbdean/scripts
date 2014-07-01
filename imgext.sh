@@ -4,7 +4,7 @@
 
 dir="$1"
 dir=${dir:-.} # Default value of the current directory
-dir=${dir%/} # Remove trailing forward slash
+dir=${dir%/} # Remove leading forward slash
 if [[ -z $dir ]]; then
 	echo "Please specify a directory" >&2
 fi
@@ -36,6 +36,8 @@ for file in "$dir"/*; do
 			("image/jpeg") echo "jpg";;
 			("image/png") echo "png";;
 			("image/svg+xml") echo "svg";;
+			("video/webm") echo "webm";;
+			("audio/webm") echo "webm";;
 		esac)
 	
 	if [ -z "$new_ext" ]; then
