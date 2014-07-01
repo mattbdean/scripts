@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Perform common fresh-install tasks (install and remove software, fonts, generate system config files, add PPAs, install ZSH, etc.)
+
 TRUE=1
 FALSE=0
 

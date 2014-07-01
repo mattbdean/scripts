@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Corrects the extensions in a directory by looking at its MIME-type
+
 dir="$1"
 dir=${dir:-.} # Default value of the current directory
 dir=${dir%/} # Remove trailing forward slash

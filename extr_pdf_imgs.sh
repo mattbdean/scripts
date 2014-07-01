@@ -1,10 +1,8 @@
 #!/bin/bash
 
-## 1 - PDF name
-## 2 - Directory name
-## 3 - Base name
+## Extracts all images from a PDF and puts them in a given directory with a given prefix
 
-show_help() {
+help() {
 	cat << EOF
 
 Extract PDF Images v1.0
@@ -24,7 +22,7 @@ exit 1
 }
 
 if [ "$#" -ne 3 ]; then
-	show_help
+	help
 fi
 
 mkdir -p "$2"

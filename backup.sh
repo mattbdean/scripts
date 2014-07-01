@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Backs up (gzips) certain directories
+
 bool=true
 
 function error() {

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Change the currently enabled Apache 2 virtual site
+
 # Test for null parameters
 if [[ -f "/etc/apache2/sites-available/$1" ]]; then
 	echo No new website given.

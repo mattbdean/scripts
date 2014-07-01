@@ -1,8 +1,6 @@
 #!/bin/bash
 
-#  Usage:
-#  auto_pdf_images.sh <base-directory>
-#  
+## Extracts all images from all PDFs in a given directory
 
 shopt -s nullglob
 

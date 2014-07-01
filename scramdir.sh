@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Give every file in a given folder a random name while preserving its original extension
+
 help() {
 	cat << EOF
 Purpose: Scramble the names of all files in a directory
