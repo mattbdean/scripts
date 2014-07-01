@@ -3,6 +3,33 @@
 TRUE=1
 FALSE=0
 
+
+error() {
+	help
+	echo "Error: $1" 1>&2
+	exit 1
+}
+
+help() {
+	cat << EOF
+new_setup.sh v1.0
+
+Usage: ./new_setup.sh [-a]
+
+Arguments:
+	-a, --all         Do everything
+	-b, --fstab       Change boot-time partition mount options in /etc/fstab
+	-f, --fonts       Install common fonts
+	-i, --install     Install new software
+	-h, --help        Show this message
+	-p, --ppa         Install PPAs
+	-r, --remove      Remove software
+	-s, --settings    Miscilaneous settings
+	-t, --terminator  Change the default color scheme of Terminator to Solarized Dark and apply Ubuntu Mono patched font
+	-z, --oh-my-zsh   Install and configure Oh-My-Zsh
+EOF
+}
+
 ## Tests if a package is installed
 ## $1: The package to test
 packageInstalled() {
@@ -46,6 +73,8 @@ statusMessage() {
 	esac
 }
 
+## Installs a font.
+## $1 The URL of the font to download and install
 font() {
 	if [[ -z "$1" ]]; then
 		error "No font given."
@@ -54,37 +83,16 @@ font() {
 	# Download the font
 	mkdir -p $FONT_DIR
 	wget "$1" -P $FONT_DIR
+}
+
+## Updates the font cache
+font_done() {
 	echo -n "Updating font cache... "
 	fc-cache -f
 	statusMessage
 }
 
-help() {
-	cat << EOF
-new_setup.sh v0.8
-
-Usage: ./new_setup.sh [-a | --all] [-f | --fstab] [-i | --install] [-h | --help] [-p | --ppa] [-r | --remove] [-s | --settings] [-t | --terminator] [-z | --oh-my-zsh]
-
-Arguments:
-	-a   --all         Do everything
-	-f   --fstab       Change boot-time partition mount options in /etc/fstab
-	-i   --install     Install new software
-	-h   --help        Show this message
-	-p   --ppa         Install PPAs
-	-r   --remove      Remove software
-	-s   --settings    Miscilaneous settings
-	-t   --terminator  Change the default color scheme of Terminator to Solarized Dark and apply Ubuntu Mono patched font
-	-z   --oh-my-zsh   Install and configure Oh-My-Zsh
-EOF
-}
-
-# Requires root to run most of it
-if [[ $EUID -ne 0 ]]; then
-	echo "Error: Need root to continue"
-	exit 1
-fi
-
-declare -A ACTIONS=([all]=$FALSE [fstab]=$FALSE [install]=$FALSE [ppa]=$FALSE [remove]=$FALSE [settings]=$FALSE [terminator]=$FALSE [oh-my-zsh]=$FALSE [git]=$FALSE)
+declare -A ACTIONS
 
 # Read parameters
 while test $# -gt 0; do
@@ -97,7 +105,7 @@ while test $# -gt 0; do
 			ACTIONS[all]=$TRUE
 			shift
 			;;
-		-f|--fstab)
+		-b|--fstab)
 			ACTIONS[fstab]=$TRUE
 			shift
 			;;
@@ -121,8 +129,8 @@ while test $# -gt 0; do
 			ACTIONS[settings]=$TRUE
 			shift
 			;;
-		-fo|--font)
-			ACTIONS[source_code_pro]=$TRUE
+		-f|--fonts)
+			ACTIONS[fonts]=$TRUE
 			shift
 			;;
 		-t|--terminator)
@@ -137,17 +145,39 @@ done
 
 ##### SET UP PPAs #####
 if [[ $(action "ppa") == "$TRUE" ]]; then
-	# Google Chrome
-	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-	sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+	SOURCES_HOME=/etc/apt/sources.list.d
 
-	ppa_list=("webupd8team/java" "keepassx/ppa" "tualatrix/ppa" "stefansundin/truecrypt" "webupd8team/tor-browser" "webupd8team/sublime-text-3" "upubuntu-com/sdk")
+	ppa_list=("webupd8team/java" "keepassx/daily" "tualatrix/ppa" "stefansundin/truecrypt" "webupd8team/tor-browser" "webupd8team/sublime-text-3")
 
 	for ppa in "${ppa_list[@]}"; do
-		echo -n "Adding PPA ppa:${ppa}... "
-		add-apt-repository "ppa:${ppa}" -y &>/dev/null
-		statusMessage
+		
+		# Search for the PPA in /etc/apt/sources.list.d/
+		found=$FALSE
+		for f in $SOURCES_HOME/*.list; do
+			filename="${f##*/}"
+			filename=$(basename $filename .list)
+			filename=${filename/-/\/}
+
+			if [[ $filename == $ppa* ]]; then
+				found=$TRUE
+			fi
+		done
+		
+		if [[ $found == $FALSE ]]; then
+			echo -n "Adding PPA ppa:${ppa}... "
+			add-apt-repository "ppa:${ppa}" -y &>/dev/null
+			statusMessage
+		fi
 	done
+	
+	# Google Chrome
+	chrome_list=$SOURCES_HOME/google.list
+	
+	if [[ ! -f $chrome_list ]]; then
+		echo -n "Adding Google Chrome sig: "
+		wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
+		echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> $chrome_list
+	fi
 
 	echo -n "Updating package list... "
 	apt-get update &>/dev/null
@@ -175,15 +205,15 @@ if [[ $(action "remove") == "$TRUE" ]]; then
 fi
 
 ##### INSTALL NEW SOFTWARE #####
-if [[ $(action "install") == "$TRUE" ]]; then
-	install_list=("vim" "google-chrome-stable" "terminator" "keepassx" "truecrypt" "ubuntu-tweak" "unity-tweak-tool" "gnome-tweak-tool" "dconf-editor" \
-		"tor-browser" "sublime-text-installer" "flashplugin-installer" "vlc" "rar" "git" "curl" "zsh" "tmux")
+if [[ $(action "install" true) == "$TRUE" ]]; then
+	install_list=("vim-gtk" "curl" "google-chrome-stable" "terminator" "keepassx" "truecrypt" "ubuntu-tweak" "unity-tweak-tool" "gnome-tweak-tool" \
+		"tor-browser" "sublime-text-installer" "flashplugin-installer" "vlc" "rar" "git" "curl" "zsh" "tmux" "python3-pip" "gimp")
 
 	for install in "${install_list[@]}"; do
 		# Only call apt-get if we have to
 		if ! packageInstalled "$install"; then
 			echo -n "Installing $install... "
-			apt-get install $install -y --force-yes &>/dev/null
+			apt-get install $install -y #&>/dev/null
 			statusMessage
 		fi
 	done
@@ -192,6 +222,8 @@ if [[ $(action "install") == "$TRUE" ]]; then
 	apt-get install ubuntu-restricted-extras -y
 	apt-get install oracle-java7-installer -y
 	apt-get install oracle-java7-set-default -y
+
+	pip3 install praw
 
 	# Fix Sublime Text 3 permissions
 	chmod +x /opt/sublime_text/sublime_text
@@ -209,14 +241,12 @@ if [[ $(action "oh-my-zsh") == "$TRUE" ]]; then
 	# Set the theme to agnoster
 	findAndReplace "$(userHome)/.zshrc" "ZSH_THEME=\"robbyrussell\"" "ZSH_THEME=\"agnoster\""
 
-	font "https://raw.github.com/Lokaltog/powerline-fonts/master/UbuntuMono/Ubuntu%20Mono%20derivative%20Powerline.ttf"
 
 	# Change zsh permissions, currently owned by root, change them to $SUPER_USER
 	find "$(userHome)" -maxdepth 1 -name "*zsh*" -exec chown -R "$SUDO_USER":"$(id -g -n "$SUDO_USER")" "{}" \;
 fi
 
 ##### GIT #####
-
 if [[ $(action "git") == "$TRUE" ]]; then
 	echo "Configuring Git"
 	git config --global color.ui true
@@ -241,13 +271,16 @@ if [[ $(action "settings") == "$TRUE" ]]; then
 fi
 
 ##### FONTS #####
-if [[ $(action "source_code_pro") == "$TRUE" ]]; then
+if [[ $(action "fonts") == "$TRUE" ]]; then
 	font "http://ff.static.1001fonts.net/s/o/source-code-pro.regular.ttf"
+	font "https://raw.github.com/Lokaltog/powerline-fonts/master/UbuntuMono/Ubuntu%20Mono%20derivative%20Powerline.ttf"
+
+	font_done
 fi
 
 ##### FSTAB #####
 if [[ $(action "fstab") == "$TRUE" ]]; then
-	cat << EOF > "/etc/fdisk"
+	cat << EOF > "/etc/fstab"
 /dev/sda2 /media/win ntfs-3g nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=Windows 0 0 # Windows
 /dev/sda4 /media/storage ntfs-3g nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=Storage 0 0 # Storage
 /dev/disk/by-uuid/BA021B21021AE1E5 /mnt/BA021B21021AE1E5 auto nosuid,nodev,nofail,noauto 0 0 # SYSTEM

@@ -46,7 +46,7 @@ fi
 
 if [ ${#directories[@]} -eq 0 ]; then
 	# directories to back up is empty. Use defaults.
-	directories=("/opt/scripts" "/etc/apache2/sites-available" "/var/www" "/home/matthew/.config" "/opt/android-studio" "/opt/cpuminer" "/opt/android-sdk" "/home/matthew/projects")
+	directories=("/opt/scripts" "/etc/apache2/sites-available" "/var/www" "/home/matthew/.config" "/opt/android-studio" "/opt/android-sdk" "/home/matthew/projects")
 fi
 
 file_list=
