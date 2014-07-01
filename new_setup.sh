@@ -3,7 +3,6 @@
 TRUE=1
 FALSE=0
 
-
 error() {
 	help
 	echo "Error: $1" 1>&2
@@ -14,7 +13,7 @@ help() {
 	cat << EOF
 new_setup.sh v1.0
 
-Usage: ./new_setup.sh [-a]
+Usage: new_setup.sh [-a]
 
 Arguments:
 	-a, --all         Do everything

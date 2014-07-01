@@ -18,3 +18,4 @@ sudo a2ensite $1
 
 # Reload Apache
 sudo service apache2 reload
+

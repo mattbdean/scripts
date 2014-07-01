@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #  Usage:
-#  auto-pdf-images.sh <base-directory>
+#  auto_pdf_images.sh <base-directory>
 #  
 
 shopt -s nullglob
@@ -14,7 +14,7 @@ for file in *.pdf; do
 	basename=$(echo `basename "$file" .pdf`)
 	echo $file
 	echo $basename
-	extract-pdf-images.sh "$file" "$basename" "$basename"
+	extr_pdf_imgs.sh "$file" "$basename" "$basename"
 done
 
 # Move back up to the previous directory

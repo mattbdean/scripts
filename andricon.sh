@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Resizes an image into the correct dimensions and then places
-# them into the correct directory for the android layout
-
 error() {
 	help
 	echo "Error: $1"
@@ -11,12 +8,12 @@ error() {
 
 help() {
 	cat << EOF
-android_icon.sh v1.0
+andricon.sh v1.0
 
 This script uses imagemagick to resize an image to fit the specification of
 android "drawable" images.
 
-Usage: android_icon.sh <icon> [res-root]
+Usage: andricon.sh <icon> [res-root]
 
     <icon>     The image to use
     [res-root] The directory which contains all of the drawable-* direcotires. Usually called "res".
@@ -24,10 +21,10 @@ Usage: android_icon.sh <icon> [res-root]
 
 Examples:
 	# Resize an icon called my_icon.png
-	android_icon.sh my_icon.png
+	andricon.sh my_icon.png
 
 	# Resize an icon called my_icon.png, where the base directory is projects/MyApp/src/res/
-	android_icon.sh my_icon.png MyApp/src/res
+	andricon.sh my_icon.png MyApp/src/res
 EOF
 }
 
@@ -38,7 +35,7 @@ require_imagemagick() {
 	fi
 }
 
-BASE_SIZE="32"
+BASE_SIZE="48"
 image="$1"
 base_dir="$2"
 
@@ -68,3 +65,4 @@ for res_name in "${!SIZES[@]}"; do
 	
 	convert "$image" -resize "$dim"x"$dim" "$dir/$image"
 done
+

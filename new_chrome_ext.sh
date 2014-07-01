@@ -9,3 +9,4 @@ cat << EOF > manifest.json
 	"permissions": []
 }
 EOF
+

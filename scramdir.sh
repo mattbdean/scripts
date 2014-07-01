@@ -3,7 +3,7 @@
 help() {
 	cat << EOF
 Purpose: Scramble the names of all files in a directory
-Usage: scramble.sh [folder]
+Usage: scramdir.sh [folder]
 Version: 1.0
 
 EOF
@@ -25,7 +25,7 @@ fi
 
 # Ask for confirmation
 while true; do
-	read -p "Really shuffle all files in $(readlink -f $BASE_FOLDER)? " yn
+	read -p "Really shuffle all files in $(readlink -f $BASE_FOLDER)? [y/n]" yn
 	case $yn in
 		[Yy]* ) break;;
 		[Nn]* ) exit;;
