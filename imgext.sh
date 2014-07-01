@@ -53,6 +53,12 @@ for file in "$dir"/*; do
 	fi
 
 	full_path="$dir/$name.$new_ext"
+
+	if [ "$full_path" == "$file" ]; then
+		# No change
+		continue;
+	fi
+
 	echo "$file --> $full_path"
 	mv "$file" "$full_path"
 
