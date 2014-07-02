@@ -5,7 +5,7 @@
 ##
 ## This script creates a hash of a file in ~/.verify.sh/ where the file name is the given file and
 ## its contents is the SHA-512 sum of the original file. This command exits with a non-zero code
-## if the stored hashes of the given files did not their just-calculated hashes.
+## if the stored hashes of the given files did not equal their just-calculated hashes.
 
 #HASH_DIRECTORY="/opt/scripts/hashes"
 HASH_DIRECTORY="$HOME/.verify.sh"
