@@ -1,0 +1,29 @@
+{
+	"purpose": "Change the currently enabled Apache 2 virtual site. Disables all currently enabled sites, enables the given one, and reloads the `apache2` service.",
+	"args": [
+		{
+			"name": "site",
+			"description": "The name of the `.conf` file in `/etc/apache2/sites-available/`, without the `.conf` extension",
+			"required": true,
+			"positional": true,
+			"option_names": []
+		}
+	],
+	"dependencies": [
+		{
+			"name": "apache2",
+			"url": "https://httpd.apache.org/"
+		}
+	],
+	"exit_codes": {
+		"0": "Exited normally",
+		"1": "If there was no new site given"
+	},
+	"requires_root": false,
+	"examples": [
+		{
+			"purpose": "Enable a virtual site called \"mysite\"",
+			"args": "mysite"
+		}
+	]
+}

@@ -1,0 +1,43 @@
+{
+	"purpose": "",
+	"args": [
+		{
+			"name": "pdf-name",
+			"description": "The name of the PDF file to extract the images from",
+			"required": true,
+			"positional": true,
+			"option_names": []
+		},
+		{
+			"name": "directory-name",
+			"description": "The directory to extract (and make if it doesn't exist) the files into",
+			"required": true,
+			"positional": true,
+			"option_names": []
+		},
+		{
+			"name": "base-name",
+			"description": "The common base-name of every picture from the PDF",
+			"required": true,
+			"positional": true,
+			"option_names": []
+		}
+	],
+	"dependencies": [
+		{
+			"name": "poppler-utils",
+			"url": "http://poppler.freedesktop.org/"
+		}
+	],
+	"exit_codes": {
+		"0": "Exited normally",
+		"1": "If there were not 3 arguments specified"
+	},
+	"requires_root": false,
+	"examples": [
+		{
+			"purpose": "Extract all the images from \"file.pdf\" to \"out/\", all with a basename of \"myprefix\"",
+			"args": "file.pdf out/ myprefix"
+		}
+	]
+}

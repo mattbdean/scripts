@@ -1,0 +1,97 @@
+{
+	"purpose": "Perform common fresh-install tasks (install and remove software, fonts, generate system config files, add PPAs, install ZSH, etc.)",
+	"args": [
+		{
+			"name": "all",
+			"description": "Do everything",
+			"required": false,
+			"positional": false,
+			"option_names": ["-a", "--all"]
+		},
+		{
+			"name": "fstab",
+			"description": "Change boot-time partition mount options by modifying `/etc/fstab`",
+			"required": false,
+			"positional": false,
+			"option_names": ["-b", "--fstab"]
+		},
+		{
+			"name": "fonts",
+			"description": "Install common fonts",
+			"required": false,
+			"positional": false,
+			"option_names": ["-f", "--fonts"]
+		},
+		{
+			"name": "help",
+			"description": "Show a help message and exits",
+			"required": false,
+			"positional": false,
+			"option_names": ["-h", "--help"]
+		},
+		{
+			"name": "ppa",
+			"description": "Add PPAs",
+			"required": false,
+			"positional": false,
+			"option_names": ["-p", "--ppa"]
+		},
+		{
+			"name": "remove",
+			"description": "Remove software",
+			"required": false,
+			"positional": false,
+			"option_names": ["-r", "--remove"]
+		},
+		{
+			"name": "settings",
+			"description": "Miscilaneous settings",
+			"required": false,
+			"positional": false,
+			"option_names": ["-s", "--settings"]
+		},
+		{
+			"name": "terminator",
+			"description": "Change the default color scheme of Terminator to Solarized Dark and apply Ubuntu Mono patched font",
+			"required": false,
+			"positional": false,
+			"option_names": ["-t", "--terminator"]
+		},
+		{
+			"name": "oh-my-zsh",
+			"description": "Install and configure Oh-My-Zsh",
+			"required": false,
+			"positional": false,
+			"option_names": ["-z", "--oh-my-zsh"]
+		}
+	],
+	"dependencies": [
+		{
+			"name": "apt-get",
+			"url": "https://wiki.debian.org/apt-get"
+		},
+		{
+			"name": "wget",
+			"url": "https://www.gnu.org/software/wget/"
+		}
+	],
+	"exit_codes": {
+		"0": "Exited normally",
+		"1": "Various error occurred"
+	},
+	"requires_root": true,
+	"examples": [
+		{
+			"purpose": "Do all fresh-install tasks",
+			"args": "-a"
+		},
+		{
+			"purpose": "Only modify `/etc/fstab`",
+			"args": "--fstab"
+		},
+		{
+			"purpose": "Only install software",
+			"args": "--install"
+		}
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"purpose": "This script uses imagemagick to resize an image to fit the specification of android \"drawable\" images.",
+	"args": [
+		{
+			"name": "icon",
+			"description": "The image to use",
+			"required": true,
+			"positional": true,
+			"option_names": []
+		}
+	],
+	"dependencies": [
+		{
+			"name": "imagemagick",
+			"url": "http://www.imagemagick.org/"
+		}
+	],
+	"exit_codes": {
+		"0": "Exited normally",
+		"1": "If imagemagick is not installed or there was no imput file"
+	},
+	"requires_root": false,
+	"examples": [
+		{
+			"purpose": "Resize an icon called my_icon.png",
+			"args": "my_icon.png"
+		},
+		{
+			"purpose": "Resize an icon called my_icon.png, where the base directory is projects/MyApp/src/res/",
+			"args": "my_icon.png MyApp/src/res"
+		}
+	]
+}

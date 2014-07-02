@@ -14,7 +14,7 @@ echo "Getting dotfiles..."
 dotfiles_dir=/tmp/dotfiles
 
 rm -rf $dotfiles_dir
-git clone https://github.com/thatJavaNerd/dotfiles $dotfiles_dir
+git clone https://bitbucket.org/thatJavaNerd/dotfiles $dotfiles_dir
 
 # http://unix.stackexchange.com/a/6397
 shopt -s dotglob nullglob

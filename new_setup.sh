@@ -268,7 +268,7 @@ if [[ $(action "settings") == "$TRUE" ]]; then
 	# Disable error reporting to Canonical
 	findAndReplace /etc/default/apport "enabled=1" "enabled=0"
 
-	# Run new_setup_settings.sh for gsettings changes
+	echo "Run new_setup_settings.sh for gsettings changes"
 fi
 
 ##### FONTS #####
