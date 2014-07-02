@@ -1,7 +1,5 @@
 #!/bin/bash
 
-## Extracts all images from all PDFs in a given directory
-
 shopt -s nullglob
 DIR="$1"
 DIR=${DIR:-.} # Default value of current directory

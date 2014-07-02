@@ -8,13 +8,14 @@ This script uses imagemagick to resize an image to fit the specification of andr
 
 ####Usage
 
-`$ andricon.sh <icon>`
+`$ andricon.sh <icon> [base_dir]`
 
 ####Arguments
 
 Name | Description
 ---- | -----------
 `icon` | The image to use
+`base_dir` | The place to output the resized files to. Defaults to the current directory
 
 ####Examples
 
@@ -29,7 +30,9 @@ user@hostname:~$ andricon.sh my_icon.png MyApp/src/res
 Code | Description
 ---- | -----------
 `0` | Exited normally
-`1` | If imagemagick is not installed or there was no imput file
+`1` | If imagemagick is not installed
+`2` | If the given file does not exist
+`3` | If the given base directory does not exist
 
 ####Dependencies
 
@@ -125,7 +128,7 @@ user@hostname:~$ cha2site.sh mysite
 Code | Description
 ---- | -----------
 `0` | Exited normally
-`1` | If there was no new site given
+`1` | If the given site does not exist
 
 ####Dependencies
 
@@ -388,7 +391,9 @@ hostname# verify.sh file_one.txt file_two.txt file_three.txt
 Code | Description
 ---- | -----------
 `0` | Exited normally
-`1` | If no files were given or a hash does not match
+`1` | A hash did not match
+`2` | If no files were given
+`3` | If a given file did not exist
 
 ####Dependencies
 
@@ -419,6 +424,8 @@ user@hostname:~$ yt2wav.sh https://www.youtube.com/watch?v=hbAUwi4D3Ew
 Code | Description
 ---- | -----------
 `0` | Exited normally
+`1` | youtube-dl was not installed
+`2` | ffmpeg was not installed
 
 ####Dependencies
 

@@ -1,14 +1,9 @@
 #!/bin/bash
 
-## Give every file in a given folder a random name while preserving its original extension
+source core.sh
 
 help() {
-	cat << EOF
-Purpose: Scramble the names of all files in a directory
-Usage: scramdir.sh [folder]
-Version: 1.0
-
-EOF
+	phelp $0
 }
 
 BASE_FOLDER="$1"
@@ -26,14 +21,11 @@ if [ ! -d "$BASE_FOLDER" ]; then
 fi
 
 # Ask for confirmation
-while true; do
-	read -p "Really shuffle all files in $(readlink -f $BASE_FOLDER)? [y/n]" yn
-	case $yn in
-		[Yy]* ) break;;
-		[Nn]* ) exit;;
-		* ) echo "Please answer yes or no.";;
-	esac
-done
+code=$(confirm "Really shuffle all files in $(readlink -f $BASE_FOLDER)? [y/n] ")
+
+if [ $code -ne 0 ]; then
+	exit 1
+fi
 
 counter=0
 for f in $BASE_FOLDER/*; do

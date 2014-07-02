@@ -1,0 +1,17 @@
+{
+	"purpose": "This script reads a file at `~/.path` and every directory (if it exists) to a `$PATH`-like variable. Lines that are empty or start with '#' are ignored. At the end of this script, the new path variable is echoed out for use in other scripts.\\n\\nSample usage:\\n\\n```shell\\nnewpath=$(path.sh)\\nif [ $? -eq 0 ]; then\\n    export PATH=$newpath\\nelse\\n    # $newpath has the error message from path.sh\\n    echo $newpath\\nfi\\n ```\\n",
+	"args": [],
+	"dependencies": [],
+	"exit_codes": {
+		"0": "Exited normally",
+		"1": "The `~/.path` file does not exist",
+		"2": "A directory in `~/.path` does not exist"
+	},
+	"requires_root": false,
+	"examples": [
+		{
+			"purpose": "Show the new path variable. Note that this is not actually applied to your current session",
+			"args": ""
+		}
+	]
+}

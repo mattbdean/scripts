@@ -1,0 +1,31 @@
+{
+	"purpose": "To show you how to create these JSON files",
+	"args": [
+		{
+			"name": "positionalArg",
+			"description": "This is a required positional argument"
+			"required": true,
+			"positional": true,
+			"option_names": []
+		},
+		{
+			"name": "optionalArg",
+			"description": "This is an optional argument"
+			"required": false,
+			"positional": false,
+			"option_names": ["-o", "--optional-arg"]
+		}
+	],
+	"exit_codes": {
+		"0": "Exited normally",
+		"1": "Exited abnormally"
+	},
+	"requires_root": false,
+	"dependencies": ["zsh", "other_command"],
+	"examples": [
+		{
+			"purpose": "Do something"
+			"command": "arg1 -o"
+		}
+	]
+}

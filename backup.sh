@@ -1,20 +1,11 @@
 #!/bin/bash
 
-## Backs up (gzips) certain directories
-
 bool=true
 
-function error() {
-	help
-	echo "Error: $1" 1>&2
-	exit
-}
+source core.sh
 
-function help() {
-	cat << EOF
-backup.sh v1.0
-
-EOF
+help() {
+	phelp $0	
 }
 
 restore=false
@@ -42,8 +33,9 @@ while test "$#" -gt 0; do
 	esac
 done
 
-if [[ -z "$archive" ]]; then
-	error "Please specify a backup location"
+if [ -z "$archive" ]; then
+	perror "Please specify a backup location"
+	exit 1
 fi
 
 if [ ${#directories[@]} -eq 0 ]; then

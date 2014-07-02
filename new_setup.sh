@@ -1,34 +1,13 @@
 #!/bin/bash
 
-## Perform common fresh-install tasks (install and remove software, fonts, generate system config files, add PPAs, install ZSH, etc.)
+source core.sh
 
 TRUE=1
 FALSE=0
 
-error() {
-	help
-	echo "Error: $1" 1>&2
-	exit 1
-}
-
 help() {
-	cat << EOF
-new_setup.sh v1.0
-
-Usage: new_setup.sh [-a]
-
-Arguments:
-	-a, --all         Do everything
-	-b, --fstab       Change boot-time partition mount options in /etc/fstab
-	-f, --fonts       Install common fonts
-	-i, --install     Install new software
-	-h, --help        Show this message
-	-p, --ppa         Install PPAs
-	-r, --remove      Remove software
-	-s, --settings    Miscilaneous settings
-	-t, --terminator  Change the default color scheme of Terminator to Solarized Dark and apply Ubuntu Mono patched font
-	-z, --oh-my-zsh   Install and configure Oh-My-Zsh
-EOF
+	phelp $0
+	exit 0
 }
 
 ## Tests if a package is installed
@@ -78,7 +57,8 @@ statusMessage() {
 ## $1 The URL of the font to download and install
 font() {
 	if [[ -z "$1" ]]; then
-		error "No font given."
+		perror "No font given."
+		exit 1
 	fi
 	FONT_DIR="/usr/share/fonts/truetype/custom"
 	# Download the font

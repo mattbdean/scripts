@@ -1,13 +1,13 @@
 #!/bin/bash
 
-which youtube-dl &>/dev/null
-if [ ! $? -eq 0 ]; then
-	echo "youtube-dl is required for this script"
+if [ $(require youtube-dl) -eq 1 ]; then
+	perror "This script requires youtube-dl"
+	exit 1
 fi
 
-which ffmpeg &>/dev/null
-if [ ! $? -eq 0 ]; then
-	echo "ffmpeg is required for this script"
+if [ $(require ffmpeg) -eq 1 ]; then
+	perror "This script requires ffmpeg"
+	exit 2
 fi
 
 youtube-dl "$1" --extract-audio --audio-format wav

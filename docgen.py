@@ -21,13 +21,13 @@ def header(file, str):
 	file.write('####' + str + '\n\n')
 
 def main():
-	out = open('../README.md', 'wt', encoding='UTF-8')
+	out = open('README.md', 'wt', encoding='UTF-8')
 
 	out.write('My bash scripts\n')
 	out.write('===============\n\n')
 	out.write('A few scripts that I use. Nothing (too) special.\n')
 
-	for f in sorted(glob.glob('*.json')):
+	for f in sorted(glob.glob('docgen/*.json')):
 		print('Reading {}'.format(f))
 
 		json_data = open(f)
@@ -35,7 +35,7 @@ def main():
 		json_data.close()
 
 		# Script header
-		filename = os.path.splitext(f)[0]
+		filename = os.path.basename(os.path.splitext(f)[0])
 		root = data['requires_root']
 		out.write('##[`{}`](https://github.com/thatJavaNerd/scripts/blob/master/{})\n'.format(filename, filename))
 		out.write('\n')

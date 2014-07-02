@@ -1,53 +1,18 @@
 #!/bin/bash --norc
 # Use --norc to prevent using ~/.bashrc which could be indexed by verify.sh
 
-## Verify that a file has not been modified since its original hashing. Requires super-user access.
-##
-## This script creates a hash of a file in ~/.verify.sh/ where the file name is the given file and
-## its contents is the SHA-512 sum of the original file. This command exits with a non-zero code
-## if the stored hashes of the given files did not equal their just-calculated hashes.
 
-#HASH_DIRECTORY="/opt/scripts/hashes"
 HASH_DIRECTORY="$HOME/.verify.sh"
 
 help() {
-	cat << EOF
-
-verify.sh v0.2
-
-Usage: verify.sh <files...> [-u | --update] [-h | --help]
-	
-	files...        A variable amount of files to check.
-	-u | --update   Forces updating the hashes of the given files.
-	-h | --help     Shows this message.
-
-Examples:
-
-    # Verify that a file called file_one.txt has not been modified
-    # since it's last hash. If no hash file exists, a new one will
-    # be created.
-    $ verify.sh file_one.txt
-
-    # Forces creating a new hash for a file called file_one.txt.
-    # Requires superuser privileges.
-    $ (sudo) verify.sh file_one.txt --update
-
-    # Verify the integrity of all three files mentioned. If no has
-    # is found, one will be generated.
-    $ verify.sh file_one.txt file_two.txt file_three.txt
-
-EOF
-}
-
-error() {
-	help
-	echo "Error: $1"
-	exit 1
+	phelp $0
 }
 
 # Need root in order
 if [ "$UID" -ne 0 ]; then
-	error "Need to run as root"
+	perror "Need to run as root"
+	help
+	exit 1
 fi
 
 hash_file() {
@@ -78,7 +43,8 @@ while test $# -gt 0; do
 done
 
 if [ ${#files[@]} -eq 0 ]; then
-	error "No files given!"
+	perror "No files given!"
+	exit 2
 fi
 
 if [ ! -d "$HASH_DIRECTORY" ]; then
@@ -103,11 +69,12 @@ for file in ${files[@]}; do
 			file_hash=$(cat "$hash_file")
 
 			if [ ! "$current_hash" == "$file_hash" ]; then
-				echo "CHECKSUM MISMATCH: $file"
+				perror "CHECKSUM MISMATCH: $file"
 				exit 1
 			fi
 		fi
 	else
-		error "File does not exist: $file"
+		perror "File does not exist: $file"
+		exit 3
 	fi
 done

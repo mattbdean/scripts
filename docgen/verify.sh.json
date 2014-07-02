@@ -38,7 +38,9 @@
 	],
 	"exit_codes": {
 		"0": "Exited normally",
-		"1": "If no files were given or a hash does not match"
+		"1": "A hash did not match",
+		"2": "If no files were given",
+		"3": "If a given file did not exist"
 	},
 	"requires_root": true,
 	"examples": [

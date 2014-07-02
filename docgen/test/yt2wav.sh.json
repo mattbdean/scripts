@@ -20,9 +20,7 @@
 		}
 	],
 	"exit_codes": {
-		"0": "Exited normally",
-		"1": "youtube-dl was not installed",
-		"2": "ffmpeg was not installed"
+		"0": "Exited normally"
 	},
 	"requires_root": false,
 	"examples": [

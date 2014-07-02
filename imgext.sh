@@ -1,13 +1,8 @@
 #!/bin/bash
 
-## Corrects the extensions in a directory by looking at its MIME-type
-
 dir="$1"
 dir=${dir:-.} # Default value of the current directory
 dir=${dir%/} # Remove leading forward slash
-if [[ -z $dir ]]; then
-	echo "Please specify a directory" >&2
-fi
 
 # Ask for confirmation
 while true; do
@@ -27,7 +22,7 @@ for file in "$dir"/*; do
 
 	mime=$(file --mime-type $file | awk '{print $2}')
 	if [ "$mime" == "text/html" ]; then
-		echo "$file is an HTML page" 1>&2
+		perror "$file is an HTML page"
 	fi
 
 	new_ext=$(
