@@ -9,7 +9,7 @@ DIR=${DIR%/} # Remove leading forward slash
 
 for file in "$DIR"/*.pdf; do
 	# Operate on all PDFs
-	basename=$(echo `basename "$file" .pdf`)
+	basename=$(basename "$file" .pdf)
 	echo "Extracting images in \"$file\" to \"$DIR/$basename/\""
 	extr_pdf_imgs.sh "$file" "$basename" "$DIR/$basename"
 done
