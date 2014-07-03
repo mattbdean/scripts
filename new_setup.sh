@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source core.sh
+source $(dirname $(readlink -f $0))/core.sh
 
 TRUE=1
 FALSE=0

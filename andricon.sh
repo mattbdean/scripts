@@ -8,9 +8,9 @@ base_dir=${base_dir%/} # Remove leading forward slash
 
 # Need imagemagick
 if [ $(require convert) -eq 1 ]; then
-		perror "This script requires imagemagick"
-		exit 1
-	fi
+	perror "This script requires imagemagick"
+	exit 1
+fi
 
 if [ ! -f "$image" ]; then
 	perror "\"$image\" does not exist"

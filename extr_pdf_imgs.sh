@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source core.sh
+source $(dirname $(readlink -f $0))/core.sh
 
 if [ "$#" -ne 3 ]; then
 	perror "Three arguments are required"

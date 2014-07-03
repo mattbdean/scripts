@@ -333,13 +333,16 @@ Replaces the basename (the name of the file without its extension) with a random
 
 ####Usage
 
-`$ scramdir.sh <folder>`
+`$ scramdir.sh <folder> [-f | --force] [-q | --quiet] [-s | --simulate]`
 
 ####Arguments
 
 Name | Description
 ---- | -----------
 `folder` | The folder whose contents will have scrambled basenames after the execution of this script
+`force` | Skip the prompt asking the user to confirm their actions
+`quiet` | Suppresses output showing the new and old file names
+`simulate` | Don't actually rename the files
 
 ####Examples
 

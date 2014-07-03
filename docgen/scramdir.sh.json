@@ -7,6 +7,27 @@
 			"required": true,
 			"positional": true,
 			"option_names": []
+		},
+		{
+			"name": "force",
+			"description": "Skip the prompt asking the user to confirm their actions",
+			"required": false,
+			"positional": false,
+			"option_names": ["-f", "--force"]
+		},
+		{
+			"name": "quiet",
+			"description": "Suppresses output showing the new and old file names",
+			"required": false,
+			"positional": false,
+			"option_names": ["-q", "--quiet"]
+		},
+		{
+			"name": "simulate",
+			"description": "Don't actually rename the files",
+			"required": false,
+			"positional": false,
+			"option_names": ["-s", "--simulate"]
 		}
 	],
 	"dependencies": [],

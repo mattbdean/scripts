@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source core.sh
+source $(dirname $(readlink -f $0))/core.sh
 
 site=$1
 
