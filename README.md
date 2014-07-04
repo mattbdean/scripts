@@ -256,28 +256,30 @@ Perform common fresh-install tasks (install and remove software, fonts, generate
 
 ####Usage
 
-`# new_setup.sh [-a | --all] [-b | --fstab] [-f | --fonts] [-h | --help] [-p | --ppa] [-r | --remove] [-s | --settings] [-t | --terminator] [-z | --oh-my-zsh]`
+`# new_setup.sh [-a | --all] [-f | --fonts] [-b | --fstab] [-g | --git] [-h | --help] [-i | --install] [-p | --ppa] [-r | --remove] [-s | --settings] [-t | --terminator] [-z | --oh-my-zsh]`
 
 ####Arguments
 
 Name | Description
 ---- | -----------
-`all` | Do everything
-`fstab` | Change boot-time partition mount options by modifying `/etc/fstab`
-`fonts` | Install common fonts
+`all` | Do all of the things listed below
+`fonts` | Installs [Source Code Pro](http://www.google.com/fonts/specimen/Source+Code+Pro) and [Powerline Ubuntu Mono](https://github.com/Lokaltog/powerline-fonts/tree/master/UbuntuMono)
+`fstab` | Change boot-time partition mount options by modifying `/etc/fstab`. Uses my setup:<ul><li>`sda1`: MBR partition</li><li>`sda2`: Windows partition</li><li>`sda3`: "Storage" partition: an NTFS partition used by both Windows and Linux</li><li>`sda4`: Extended partition</li><ul><li>`sda5`: Linux partition</li><li>`sda6`: Swap partition</li></ul></ul>
+`git` | Sets up git using `git config --global $setting`. Enables color (`color.ui true`), sets the default editor to `vim` (`core.editor vim`), sets the default push strategy to simple (`push.default simple`), sets the user's name to "Matthew Dean" (`user.name "Matthew Dean"`), and prompts for an email address for `user.email`.
 `help` | Show a help message and exits
-`ppa` | Add PPAs
-`remove` | Remove software
-`settings` | Miscilaneous settings
-`terminator` | Change the default color scheme of Terminator to Solarized Dark and apply Ubuntu Mono patched font
-`oh-my-zsh` | Install and configure Oh-My-Zsh
+`install` | Installs `vim-gtk`, `curl`, `google-chrome-stable`, `terminator`, `keepassx`, `truecrypt`, `ubuntu-tweak`, `unity-tweak-tool`, `gnome-tweak-tool`, `tor-browser`, `sublime-text-installer`, `flashplugin-installer`, `vlc`, `rar`, `git`, `curl`, `zsh`, `tmux`, `python3-pip`, and `gimp`,
+`ppa` | Adds the following PPAs:<ul><li>`webupd8team/java`</li><li>`keepassx/daily`</li><li>`tualatrix/ppa`</li><li>`stefansundin/truecrypt`</li><li>`webupd8team/tor-browser`</li><li>`webupd8team/sublime-text-3`</li></ul>Also adds the [Google Chrome repo](http://www.ubuntuupdates.org/ppa/google_chrome)
+`remove` | Removes `unity-lens-shopping` and `gnome-orca`
+`settings` | Disables error reporting messages to Canonical by setting `enabled=0` in `/etc/default/apport`
+`terminator` | Change Terminator's default color scheme to Solarized Dark and applies Ubuntu Mono patched font (see `--fonts` to install)
+`oh-my-zsh` | Installs [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh) and sets the theme to "agnoster"
 
 ####Examples
 
 ```shell
 # Do all fresh-install tasks
 hostname# new_setup.sh -a
-# Only modify `/etc/fstab`
+# Only modify /etc/fstab
 hostname# new_setup.sh --fstab
 # Only install software
 hostname# new_setup.sh --install

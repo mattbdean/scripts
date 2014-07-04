@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 
-# TODO Sample output
-# TODO Assume that an exit code of 0 applies to all scripts
+"""
+TODO
+====
+
+Sample output
+Assume that an exit code of 0 applies to all scripts
+Use arrays for multi-line strings
+"""
 
 import os.path
 import glob
@@ -20,14 +26,18 @@ def printarg(file, arg):
 def header(file, str):
 	file.write('####' + str + '\n\n')
 
+def enable_newlines(str):
+	return str.replace('\\n', '\n')
+
 def main():
-	out = open(os.path.join(os.path.dirname(__file__), 'README.md'), 'wt', encoding='UTF-8')
+	root = os.path.dirname(__file__)
+	out = open(os.path.join(root, 'README.md'), 'wt', encoding='UTF-8')
 
 	out.write('My bash scripts\n')
 	out.write('===============\n\n')
 	out.write('A few scripts that I use. Nothing (too) special.\n')
 
-	for f in sorted(glob.glob('docgen/*.json')):
+	for f in sorted(glob.glob(os.path.join(root, 'docgen/*.json'))):
 		print('Reading {}'.format(f))
 
 		json_data = open(f)
@@ -44,8 +54,8 @@ def main():
 		if root:
 			out.write('>Warning: This script requires to be run as root\n\n')
 
-		# Purpose
-		out.write(data['purpose'].replace('\\n', '\n') + '\n\n')
+		# Purpose/description
+		out.write(enable_newlines(data['purpose']) + '\n\n')
 
 		# Usage
 		args = data['args']
@@ -61,7 +71,7 @@ def main():
 			out.write('Name | Description\n')
 			out.write('---- | -----------\n')
 			for arg in args:
-				out.write('`{}` | {}\n'.format(arg['name'], arg['description']))
+				out.write('`{}` | {}\n'.format(arg['name'], enable_newlines(arg['description'])))
 			out.write('\n')
 
 		# Examples
