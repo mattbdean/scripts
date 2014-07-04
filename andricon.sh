@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $(dirname $(readlink -f $0))/core.sh
+
 BASE_SIZE="48"
 image="$1"
 base_dir="$2"
@@ -31,6 +33,10 @@ for res_name in "${!SIZES[@]}"; do
 	dim=$(echo "$BASE_SIZE * $mult" | bc)
 	echo "Resizing $image to $dir ($dim x $dim)"
 	
+	if [ ! -d "$dir" ]; then
+		mkdir "$dir"
+	fi
+
 	convert "$image" -resize "$dim"x"$dim" "$dir/$image"
 done
 

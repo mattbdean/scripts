@@ -4,7 +4,15 @@ My bash scripts
 A few scripts that I use. Nothing (too) special.
 ##[`andricon.sh`](https://github.com/thatJavaNerd/scripts/blob/master/andricon.sh)
 
-This script uses imagemagick to resize an image to fit the specification of android "drawable" images.
+This script uses imagemagick to copy and resize an image into the different `drawable-*` directories usually found in `src/main/res/` in an Android project. The sizes are based on Android's [Iconography](https://developer.android.com/design/style/iconography.html) page. This script will generate:
+
+1. A 48x48 px image in `$base_dir/drawable-mdpi`
+
+2. A 72x72 px image in `$base_dir/drawable-hdpi`
+
+3. A 96x96 px image in `$base_dir/drawable-xhdpi`
+
+4. A 144x144 px image in `$base_dir/drawable-xxhdpi`
 
 ####Usage
 
@@ -133,6 +141,31 @@ Code | Description
 ####Dependencies
 
 - [`apache2`](https://httpd.apache.org/)
+
+##[`docgen.py`](https://github.com/thatJavaNerd/scripts/blob/master/docgen.py)
+
+This script generates the README.md file you are reading right now by parsing JSON files in the [docgen/](https://github.com/thatJavaNerd/scripts/tree/master/docgen) directory
+
+####Usage
+
+`$ docgen.py`
+
+####Examples
+
+```shell
+# Generate documentation for the scripts. Must be run in this project's root directory.
+user@hostname:~$ docgen.py 
+```
+####Exit codes
+
+Code | Description
+---- | -----------
+`0` | Exited normally
+`1` | Unexpted exit
+
+####Dependencies
+
+- [`python3`](https://www.python.org/)
 
 ##[`extr_pdf_imgs.sh`](https://github.com/thatJavaNerd/scripts/blob/master/extr_pdf_imgs.sh)
 

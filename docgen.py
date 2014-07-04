@@ -21,7 +21,7 @@ def header(file, str):
 	file.write('####' + str + '\n\n')
 
 def main():
-	out = open('README.md', 'wt', encoding='UTF-8')
+	out = open(os.path.join(os.path.dirname(__file__), 'README.md'), 'wt', encoding='UTF-8')
 
 	out.write('My bash scripts\n')
 	out.write('===============\n\n')
