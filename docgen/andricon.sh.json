@@ -1,42 +1,48 @@
 {
-	"purpose": "This script uses imagemagick to copy and resize an image into the different `drawable-*` directories usually found in `src/main/res/` in an Android project. The sizes are based on Android's [Iconography](https://developer.android.com/design/style/iconography.html) page. This script will generate:\\n\\n1. A 48x48 px image in `$base_dir/drawable-mdpi`\\n\\n2. A 72x72 px image in `$base_dir/drawable-hdpi`\\n\\n3. A 96x96 px image in `$base_dir/drawable-xhdpi`\\n\\n4. A 144x144 px image in `$base_dir/drawable-xxhdpi`",
-	"args": [
-		{
-			"name": "icon",
-			"description": "The image to use",
-			"required": true,
-			"positional": true,
-			"option_names": []
-		},
-		{
-			"name": "base_dir",
-			"description": "The place to output the resized files to. Defaults to the current directory",
-			"required": false,
-			"positional": "true",
-			"option_names": []
-		}
-	],
-	"dependencies": [
-		{
-			"name": "imagemagick",
-			"url": "http://www.imagemagick.org/"
-		}
-	],
-	"exit_codes": {
-		"0": "Exited normally",
-		"1": "If imagemagick is not installed",
-		"2": "If the given file does not exist",
-		"3": "If the given base directory does not exist"
-	},
-	"requires_root": false,
-	"examples": [
-		{
-			"purpose": "Resize an icon called my_icon.png",
-			"args": "my_icon.png"
-		},
-		{
-			"purpose": "Resize an icon called my_icon.png, where the base directory is projects/MyApp/src/res/",
-			"args": "my_icon.png MyApp/src/res"
-		}
-	]
+    "purpose": ["This script uses imagemagick to copy and resize an image into the different `drawable-*` directories ",
+                "usually found in `src/main/res/` in an Android project. The sizes are based on Android's [Iconography]",
+                "(https://developer.android.com/design/style/iconography.html) page. This script will generate:\\n\\n",
+                "1. A 48x48 px image in `$base_dir/drawable-mdpi`\\n\\n",
+                "2. A 72x72 px image in `$base_dir/drawable-hdpi`\\n\\n",
+                "3. A 96x96 px image in `$base_dir/drawable-xhdpi`\\n\\n",
+                "4. A 144x144 px image in `$base_dir/drawable-xxhdpi`"],
+    "args": [
+        {
+            "name": "icon",
+            "description": "The image to use",
+            "required": true,
+            "positional": true,
+            "option_names": []
+        },
+        {
+            "name": "base_dir",
+            "description": "The place to output the resized files to. Defaults to the current directory",
+            "required": false,
+            "positional": "true",
+            "option_names": []
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "imagemagick",
+            "url": "http://www.imagemagick.org/"
+        }
+    ],
+    "exit_codes": {
+        "0": "Exited normally",
+        "1": "If imagemagick is not installed",
+        "2": "If the given file does not exist",
+        "3": "If the given base directory does not exist"
+    },
+    "requires_root": false,
+    "examples": [
+        {
+            "purpose": "Resize an icon called my_icon.png",
+            "args": "my_icon.png"
+        },
+        {
+            "purpose": "Resize an icon called my_icon.png, where the base directory is projects/MyApp/src/res/",
+            "args": "my_icon.png MyApp/src/res"
+        }
+    ]
 }

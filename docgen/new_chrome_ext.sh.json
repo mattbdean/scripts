@@ -1,15 +1,15 @@
 {
-	"purpose": "Creates a template for a new Google Chrome extension. Currently a work in progress.",
-	"args": [],
-	"dependencies": [],
-	"exit_codes": {
-		"0": "Exited normally"
-	},
-	"requires_root": false,
-	"examples": [
-		{
-			"purpose": "Create a new template for a Chrome extension",
-			"args": ""
-		}
-	]
+    "purpose": "Creates a template for a new Google Chrome extension. Currently a work in progress.",
+    "args": [],
+    "dependencies": [],
+    "exit_codes": {
+        "0": "Exited normally"
+    },
+    "requires_root": false,
+    "examples": [
+        {
+            "purpose": "Create a new template for a Chrome extension",
+            "args": ""
+        }
+    ]
 }

@@ -1,21 +1,21 @@
 {
-	"purpose": "This script generates the README.md file you are reading right now by parsing JSON files in the [docgen/](https://github.com/thatJavaNerd/scripts/tree/master/docgen) directory",
-	"args": [],
-	"dependencies": [
-		{
-			"name": "python3",
-			"url": "https://www.python.org/"
-		}
-	],
-	"exit_codes": {
-		"0": "Exited normally",
-		"1": "Unexpted exit"
-	},
-	"requires_root": false,
-	"examples": [
-		{
-			"purpose": "Generate documentation for the scripts. Must be run in this project's root directory.",
-			"args": ""
-		}
-	]
+    "purpose": "This script generates the README.md file you are reading right now by parsing JSON files in the [docgen/](https://github.com/thatJavaNerd/scripts/tree/master/docgen) directory",
+    "args": [],
+    "dependencies": [
+        {
+            "name": "python3",
+            "url": "https://www.python.org/"
+        }
+    ],
+    "exit_codes": {
+        "0": "Exited normally",
+        "1": "Unexpted exit"
+    },
+    "requires_root": false,
+    "examples": [
+        {
+            "purpose": "Generate documentation for the scripts. Must be run in this project's root directory.",
+            "args": ""
+        }
+    ]
 }

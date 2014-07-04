@@ -1,34 +1,34 @@
 {
-	"purpose": "Simple script to download a YouTube video and then extract its audio in the form of a wav file",
-	"args": [
-		{
-			"name": "video",
-			"description": "The URL of the YouTube video to download",
-			"required": true,
-			"positional": true,
-			"option_names": []
-		}
-	],
-	"dependencies": [
-		{
-			"name": "youtube-dl",
-			"url": "https://rg3.github.io/youtube-dl/"
-		},
-		{
-			"name": "ffmpeg",
-			"url": "https://www.ffmpeg.org/"
-		}
-	],
-	"exit_codes": {
-		"0": "Exited normally",
-		"1": "youtube-dl was not installed",
-		"2": "ffmpeg was not installed"
-	},
-	"requires_root": false,
-	"examples": [
-		{
-			"purpose": "Download \"Fortune Days\" by The Glitch Mob",
-			"args": "https://www.youtube.com/watch?v=hbAUwi4D3Ew"
-		}
-	]
+    "purpose": "Simple script to download a YouTube video and then extract its audio in the form of a wav file",
+    "args": [
+        {
+            "name": "video",
+            "description": "The URL of the YouTube video to download",
+            "required": true,
+            "positional": true,
+            "option_names": []
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "youtube-dl",
+            "url": "https://rg3.github.io/youtube-dl/"
+        },
+        {
+            "name": "ffmpeg",
+            "url": "https://www.ffmpeg.org/"
+        }
+    ],
+    "exit_codes": {
+        "0": "Exited normally",
+        "1": "youtube-dl was not installed",
+        "2": "ffmpeg was not installed"
+    },
+    "requires_root": false,
+    "examples": [
+        {
+            "purpose": "Download \"Fortune Days\" by The Glitch Mob",
+            "args": "https://www.youtube.com/watch?v=hbAUwi4D3Ew"
+        }
+    ]
 }

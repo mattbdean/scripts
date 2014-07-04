@@ -1,28 +1,28 @@
 {
-	"purpose": "",
-	"args": [
-		{
-			"name": "",
-			"description": "",
-			"required": true,
-			"positional": true,
-			"option_names": []
-		}
-	],
-	"dependencies": [
-		{
-			"name": "",
-			"url": ""
-		}
-	],
-	"exit_codes": {
-		"0": "Exited normally"
-	},
-	"requires_root": false,
-	"examples": [
-		{
-			"purpose": "",
-			"args": ""
-		}
-	]
+    "purpose": "",
+    "args": [
+        {
+            "name": "",
+            "description": "",
+            "required": true,
+            "positional": true,
+            "option_names": []
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "",
+            "url": ""
+        }
+    ],
+    "exit_codes": {
+        "0": "Exited normally"
+    },
+    "requires_root": false,
+    "examples": [
+        {
+            "purpose": "",
+            "args": ""
+        }
+    ]
 }

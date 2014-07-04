@@ -1,60 +1,63 @@
 {
-	"purpose": "Verify that a file has not been modified since its original hashing.\\n\\nThis script creates a hash of a file in `~/.verify.sh/` where the file name is the given file and its contents is the SHA-512 sum of the original file. This command exits with a non-zero code if the stored hashes of the given files did not equal their just-calculated hashes.",
-	"args": [
-		{
-			"name": "file",
-			"description": "A file to check",
-			"required": true,
-			"positional": true,
-			"option_names": []
-		},
-		{
-			"name": "files...",
-			"description": "A list of extra files to check. If one of these files does not match its hash, the entire script will exit with a non-zero exit code.",
-			"required": false,
-			"positional": true,
-			"option_names": []
-		},
-		{
-			"name": "update",
-			"description": "Forces updating the hashes of the given files",
-			"required": false,
-			"positional": false,
-			"option_names": ["-u", "--update"]
-		},
-		{
-			"name": "help",
-			"description": "Shows a help message",
-			"required": false,
-			"positional": false,
-			"option_names": ["-h", "--help"]
-		}
-	],
-	"dependencies": [
-		{
-			"name": "sha512sum",
-			"url": "https://www.gnu.org/software/coreutils/"
-		}
-	],
-	"exit_codes": {
-		"0": "Exited normally",
-		"1": "A hash did not match",
-		"2": "If no files were given",
-		"3": "If a given file did not exist"
-	},
-	"requires_root": true,
-	"examples": [
-		{
-			"purpose": "Verify that a file called \"file_one.txt\" has not been modified since it's last hash. If no hash file exists, a new one will be created.",
-			"args": "file_one.txt"
-		},
-		{
-			"purpose": "Forces creating a new hash for a file called \"file_one.txt\".",
-			"args": "file_one.txt --update"
-		},
-		{
-			"purpose": "Verify the integrity of all three files mentioned. If a hash was not found for a file, one will be generated.",
-			"args": "file_one.txt file_two.txt file_three.txt"
-		}
-	]
+    "purpose": ["Verify that a file has not been modified since its original hashing.\\n\\n",
+                "This script creates a hash of a file in `~/.verify.sh/` where the file name is the given file and its contents is ",
+                "the SHA-512 sum of the original file. This command exits with a non-zero code if the stored hashes of the given ",
+                "files did not equal their just-calculated hashes."],
+    "args": [
+        {
+            "name": "file",
+            "description": "A file to check",
+            "required": true,
+            "positional": true,
+            "option_names": []
+        },
+        {
+            "name": "files...",
+            "description": "A list of extra files to check. If one of these files does not match its hash, the entire script will exit with a non-zero exit code.",
+            "required": false,
+            "positional": true,
+            "option_names": []
+        },
+        {
+            "name": "update",
+            "description": "Forces updating the hashes of the given files",
+            "required": false,
+            "positional": false,
+            "option_names": ["-u", "--update"]
+        },
+        {
+            "name": "help",
+            "description": "Shows a help message",
+            "required": false,
+            "positional": false,
+            "option_names": ["-h", "--help"]
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "sha512sum",
+            "url": "https://www.gnu.org/software/coreutils/"
+        }
+    ],
+    "exit_codes": {
+        "0": "Exited normally",
+        "1": "A hash did not match",
+        "2": "If no files were given",
+        "3": "If a given file did not exist"
+    },
+    "requires_root": true,
+    "examples": [
+        {
+            "purpose": "Verify that a file called \"file_one.txt\" has not been modified since it's last hash. If no hash file exists, a new one will be created.",
+            "args": "file_one.txt"
+        },
+        {
+            "purpose": "Forces creating a new hash for a file called \"file_one.txt\".",
+            "args": "file_one.txt --update"
+        },
+        {
+            "purpose": "Verify the integrity of all three files mentioned. If a hash was not found for a file, one will be generated.",
+            "args": "file_one.txt file_two.txt file_three.txt"
+        }
+    ]
 }

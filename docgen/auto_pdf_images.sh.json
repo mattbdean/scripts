@@ -1,28 +1,28 @@
 {
-	"purpose": "Extracts all images from all PDFs in a given directory",
-	"args": [
-		{
-			"name": "dir",
-			"description": "The directory to search for PDFs. Also the output directory",
-			"required": true,
-			"positional": true,
-			"option_names": []
-		}
-	],
-	"dependencies": [
-		{
-			"name": "extr_pdf_imgs.sh",
-			"url": "https://github.com/thatJavaNerd/scripts/blob/master/extr_pdf_imgs.sh"
-		}
-	],
-	"exit_codes": {
-		"0": "Exited normally"
-	},
-	"requires_root": false,
-	"examples": [
-		{
-			"purpose": "Extract all images from all PDFs in a directory called \"pdfs/\"",
-			"args": "pdfs/"
-		}
-	]
+    "purpose": "Extracts all images from all PDFs in a given directory",
+    "args": [
+        {
+            "name": "dir",
+            "description": "The directory to search for PDFs. Also the output directory",
+            "required": true,
+            "positional": true,
+            "option_names": []
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "extr_pdf_imgs.sh",
+            "url": "https://github.com/thatJavaNerd/scripts/blob/master/extr_pdf_imgs.sh"
+        }
+    ],
+    "exit_codes": {
+        "0": "Exited normally"
+    },
+    "requires_root": false,
+    "examples": [
+        {
+            "purpose": "Extract all images from all PDFs in a directory called \"pdfs/\"",
+            "args": "pdfs/"
+        }
+    ]
 }

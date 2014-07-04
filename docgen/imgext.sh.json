@@ -1,23 +1,23 @@
 {
-	"purpose": "Corrects the extensions of common internet media formats (png, jpg, gif, webm, svg) in a directory by looking at its MIME-type",
-	"args": [
-		{
-			"name": "dir",
-			"description": "The directory to scan and correct media in",
-			"required": true,
-			"positional": true,
-			"option_names": []
-		}
-	],
-	"dependencies": [],
-	"exit_codes": {
-		"0": "Exited normally"
-	},
-	"requires_root": false,
-	"examples": [
-		{
-			"purpose": "Correct all file extensions in a directory called \"my_images\"",
-			"args": "my_images/"
-		}
-	]
+    "purpose": "Corrects the extensions of common internet media formats (png, jpg, gif, webm, svg) in a directory by looking at its MIME-type",
+    "args": [
+        {
+            "name": "dir",
+            "description": "The directory to scan and correct media in",
+            "required": true,
+            "positional": true,
+            "option_names": []
+        }
+    ],
+    "dependencies": [],
+    "exit_codes": {
+        "0": "Exited normally"
+    },
+    "requires_root": false,
+    "examples": [
+        {
+            "purpose": "Correct all file extensions in a directory called \"my_images\"",
+            "args": "my_images/"
+        }
+    ]
 }

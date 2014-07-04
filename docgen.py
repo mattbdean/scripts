@@ -26,8 +26,13 @@ def printarg(file, arg):
 def header(file, str):
 	file.write('####' + str + '\n\n')
 
-def enable_newlines(str):
-	return str.replace('\\n', '\n')
+def enable_newlines(ele):
+	if isinstance(ele, str):
+		string = ele
+	elif isinstance(ele, list):
+		string = "".join(ele)
+
+	return string.replace('\\n', '\n')
 
 def main():
 	root = os.path.dirname(__file__)

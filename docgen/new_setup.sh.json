@@ -1,111 +1,138 @@
 {
-	"purpose": "Perform common fresh-install tasks (install and remove software, fonts, generate system config files, add PPAs, install ZSH, etc.)",
-	"args": [
-		{
-			"name": "all",
-			"description": "Do all of the things listed below",
-			"required": false,
-			"positional": false,
-			"option_names": ["-a", "--all"]
-		},
-		{
-			"name": "fonts",
-			"description": "Installs [Source Code Pro](http://www.google.com/fonts/specimen/Source+Code+Pro) and [Powerline Ubuntu Mono](https://github.com/Lokaltog/powerline-fonts/tree/master/UbuntuMono)",
-			"required": false,
-			"positional": false,
-			"option_names": ["-f", "--fonts"]
-		},
-		{
-			"name": "fstab",
-		"description": "Change boot-time partition mount options by modifying `/etc/fstab`. Uses my setup:<ul><li>`sda1`: MBR partition</li><li>`sda2`: Windows partition</li><li>`sda3`: \"Storage\" partition: an NTFS partition used by both Windows and Linux</li><li>`sda4`: Extended partition</li><ul><li>`sda5`: Linux partition</li><li>`sda6`: Swap partition</li></ul></ul>",
-			"required": false,
-			"positional": false,
-			"option_names": ["-b", "--fstab"]
-		},
-		{
-			"name": "git",
-			"description": "Sets up git using `git config --global $setting`. Enables color (`color.ui true`), sets the default editor to `vim` (`core.editor vim`), sets the default push strategy to simple (`push.default simple`), sets the user's name to \"Matthew Dean\" (`user.name \"Matthew Dean\"`), and prompts for an email address for `user.email`.",
-			"required": false,
-			"positional": false,
-			"option_names": ["-g", "--git"]
-		},
-		{
-			"name": "help",
-			"description": "Show a help message and exits",
-			"required": false,
-			"positional": false,
-			"option_names": ["-h", "--help"]
-		},
-		{
-			"name": "install",
-			"description": "Installs `vim-gtk`, `curl`, `google-chrome-stable`, `terminator`, `keepassx`, `truecrypt`, `ubuntu-tweak`, `unity-tweak-tool`, `gnome-tweak-tool`, `tor-browser`, `sublime-text-installer`, `flashplugin-installer`, `vlc`, `rar`, `git`, `curl`, `zsh`, `tmux`, `python3-pip`, and `gimp`,",
-			"required": false,
-			"positional": false,
-			"option_names": ["-i", "--install"]
-		},
-		{
-			"name": "ppa",
-			"description": "Adds the following PPAs:<ul><li>`webupd8team/java`</li><li>`keepassx/daily`</li><li>`tualatrix/ppa`</li><li>`stefansundin/truecrypt`</li><li>`webupd8team/tor-browser`</li><li>`webupd8team/sublime-text-3`</li></ul>Also adds the [Google Chrome repo](http://www.ubuntuupdates.org/ppa/google_chrome)",
-			"required": false,
-			"positional": false,
-			"option_names": ["-p", "--ppa"]
-		},
-		{
-			"name": "remove",
-			"description": "Removes `unity-lens-shopping` and `gnome-orca`",
-			"required": false,
-			"positional": false,
-			"option_names": ["-r", "--remove"]
-		},
-		{
-			"name": "settings",
-			"description": "Disables error reporting messages to Canonical by setting `enabled=0` in `/etc/default/apport`",
-			"required": false,
-			"positional": false,
-			"option_names": ["-s", "--settings"]
-		},
-		{
-			"name": "terminator",
-			"description": "Change Terminator's default color scheme to Solarized Dark and applies Ubuntu Mono patched font (see `--fonts` to install)",
-			"required": false,
-			"positional": false,
-			"option_names": ["-t", "--terminator"]
-		},
-		{
-			"name": "oh-my-zsh",
-			"description": "Installs [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh) and sets the theme to \"agnoster\"",
-			"required": false,
-			"positional": false,
-			"option_names": ["-z", "--oh-my-zsh"]
-		}
-	],
-	"dependencies": [
-		{
-			"name": "apt-get",
-			"url": "https://wiki.debian.org/apt-get"
-		},
-		{
-			"name": "wget",
-			"url": "https://www.gnu.org/software/wget/"
-		}
-	],
-	"exit_codes": {
-		"0": "Exited normally",
-		"1": "Various error occurred"
-	},
-	"requires_root": true,
-	"examples": [
-		{
-			"purpose": "Do all fresh-install tasks",
-			"args": "-a"
-		},
-		{
-			"purpose": "Only modify /etc/fstab",
-			"args": "--fstab"
-		},
-		{
-			"purpose": "Only install software",
-			"args": "--install"
-		}
-	]
+    "purpose": "Perform common fresh-install tasks (install and remove software, fonts, generate system config files, add PPAs, install ZSH, etc.)",
+    "args": [
+        {
+            "name": "all",
+            "description": "Do all of the things listed below",
+            "required": false,
+            "positional": false,
+            "option_names": ["-a", "--all"]
+        },
+        {
+            "name": "fonts",
+            "description": ["Installs [Source Code Pro](http://www.google.com/fonts/specimen/Source+Code+Pro) and ",
+                            "[Powerline Ubuntu Mono](https://github.com/Lokaltog/powerline-fonts/tree/master/UbuntuMono)"],
+            "required": false,
+            "positional": false,
+            "option_names": ["-f", "--fonts"]
+        },
+        {
+            "name": "fstab",
+        "description": ["Change boot-time partition mount options by modifying `/etc/fstab`. Uses my setup:",
+            "<ul>",
+                "<li>`sda1`: MBR partition</li>",
+                "<li>`sda2`: Windows partition</li>",
+                "<li>`sda3`: \"Storage\" partition: an NTFS partition used by both Windows and Linux</li>",
+                "<li>`sda4`: Extended partition</li>",
+                "<ul>",
+                    "<li>`sda5`: Linux partition</li>",
+                    "<li>`sda6`: Swap partition</li>",
+                "</ul>",
+            "</ul>"],
+            "required": false,
+            "positional": false,
+            "option_names": ["-b", "--fstab"]
+       },
+        {
+            "name": "git",
+            "description": ["Sets up git using `git config --global $setting`. Enables color (`color.ui true`), sets the",
+                            "default editor to `vim` (`core.editor vim`), sets the default push strategy to simple ",
+                            "(`push.default simple`), sets the user's name to \"Matthew Dean\" (`user.name \"Matthew Dean\"`), ",
+                            "and prompts for an email address for `user.email`."],
+            "required": false,
+            "positional": false,
+            "option_names": ["-g", "--git"]
+        },
+        {
+            "name": "help",
+            "description": "Show a help message and exits",
+            "required": false,
+            "positional": false,
+            "option_names": ["-h", "--help"]
+        },
+        {
+            "name": "install",
+            "description": ["Installs `vim-gtk`, `curl`, `google-chrome-stable`, `terminator`, `keepassx`, `truecrypt`, ",
+                            "`ubuntu-tweak`, `unity-tweak-tool`, `gnome-tweak-tool`, `tor-browser`, `sublime-text-installer`, ",
+                            "`flashplugin-installer`, `vlc`, `rar`, `git`, `curl`, `zsh`, `tmux`, `python3-pip`, and `gimp`"],
+            "required": false,
+            "positional": false,
+            "option_names": ["-i", "--install"]
+        },
+        {
+            "name": "ppa",
+            "description": [
+                "Adds the following PPAs:\\n\\n",
+                "<ul>",
+                    "<li>`webupd8team/java`</li>",
+                    "<li>`keepassx/daily`</li>",
+                    "<li>`tualatrix/ppa`</li>",
+                    "<li>`stefansundin/truecrypt`</li>",
+                    "<li>`webupd8team/tor-browser`</li>",
+                    "<li>`webupd8team/sublime-text-3`</li>",
+                "</ul>",
+                "Also adds the [Google Chrome repo](http://www.ubuntuupdates.org/ppa/google_chrome)"
+            ],
+            "required": false,
+            "positional": false,
+            "option_names": ["-p", "--ppa"]
+        },
+        {
+            "name": "remove",
+            "description": "Removes `unity-lens-shopping` and `gnome-orca`",
+            "required": false,
+            "positional": false,
+            "option_names": ["-r", "--remove"]
+        },
+        {
+            "name": "settings",
+            "description": "Disables error reporting messages to Canonical by setting `enabled=0` in `/etc/default/apport`",
+            "required": false,
+            "positional": false,
+            "option_names": ["-s", "--settings"]
+        },
+        {
+            "name": "terminator",
+            "description": "Change Terminator's default color scheme to Solarized Dark and applies Ubuntu Mono patched font (see `--fonts` to install)",
+            "required": false,
+            "positional": false,
+            "option_names": ["-t", "--terminator"]
+        },
+        {
+            "name": "oh-my-zsh",
+            "description": "Installs [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh) and sets the theme to \"agnoster\"",
+            "required": false,
+            "positional": false,
+            "option_names": ["-z", "--oh-my-zsh"]
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "apt-get",
+            "url": "https://wiki.debian.org/apt-get"
+        },
+        {
+            "name": "wget",
+            "url": "https://www.gnu.org/software/wget/"
+        }
+    ],
+    "exit_codes": {
+        "0": "Exited normally",
+        "1": "Various error occurred"
+    },
+    "requires_root": true,
+    "examples": [
+        {
+            "purpose": "Do all fresh-install tasks",
+            "args": "-a"
+        },
+        {
+            "purpose": "Only modify /etc/fstab",
+            "args": "--fstab"
+        },
+        {
+            "purpose": "Only install software",
+            "args": "--install"
+        }
+    ]
 }

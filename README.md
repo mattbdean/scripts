@@ -265,10 +265,12 @@ Name | Description
 `all` | Do all of the things listed below
 `fonts` | Installs [Source Code Pro](http://www.google.com/fonts/specimen/Source+Code+Pro) and [Powerline Ubuntu Mono](https://github.com/Lokaltog/powerline-fonts/tree/master/UbuntuMono)
 `fstab` | Change boot-time partition mount options by modifying `/etc/fstab`. Uses my setup:<ul><li>`sda1`: MBR partition</li><li>`sda2`: Windows partition</li><li>`sda3`: "Storage" partition: an NTFS partition used by both Windows and Linux</li><li>`sda4`: Extended partition</li><ul><li>`sda5`: Linux partition</li><li>`sda6`: Swap partition</li></ul></ul>
-`git` | Sets up git using `git config --global $setting`. Enables color (`color.ui true`), sets the default editor to `vim` (`core.editor vim`), sets the default push strategy to simple (`push.default simple`), sets the user's name to "Matthew Dean" (`user.name "Matthew Dean"`), and prompts for an email address for `user.email`.
+`git` | Sets up git using `git config --global $setting`. Enables color (`color.ui true`), sets thedefault editor to `vim` (`core.editor vim`), sets the default push strategy to simple (`push.default simple`), sets the user's name to "Matthew Dean" (`user.name "Matthew Dean"`), and prompts for an email address for `user.email`.
 `help` | Show a help message and exits
-`install` | Installs `vim-gtk`, `curl`, `google-chrome-stable`, `terminator`, `keepassx`, `truecrypt`, `ubuntu-tweak`, `unity-tweak-tool`, `gnome-tweak-tool`, `tor-browser`, `sublime-text-installer`, `flashplugin-installer`, `vlc`, `rar`, `git`, `curl`, `zsh`, `tmux`, `python3-pip`, and `gimp`,
-`ppa` | Adds the following PPAs:<ul><li>`webupd8team/java`</li><li>`keepassx/daily`</li><li>`tualatrix/ppa`</li><li>`stefansundin/truecrypt`</li><li>`webupd8team/tor-browser`</li><li>`webupd8team/sublime-text-3`</li></ul>Also adds the [Google Chrome repo](http://www.ubuntuupdates.org/ppa/google_chrome)
+`install` | Installs `vim-gtk`, `curl`, `google-chrome-stable`, `terminator`, `keepassx`, `truecrypt`, `ubuntu-tweak`, `unity-tweak-tool`, `gnome-tweak-tool`, `tor-browser`, `sublime-text-installer`, `flashplugin-installer`, `vlc`, `rar`, `git`, `curl`, `zsh`, `tmux`, `python3-pip`, and `gimp`
+`ppa` | Adds the following PPAs:
+
+<ul><li>`webupd8team/java`</li><li>`keepassx/daily`</li><li>`tualatrix/ppa`</li><li>`stefansundin/truecrypt`</li><li>`webupd8team/tor-browser`</li><li>`webupd8team/sublime-text-3`</li></ul>Also adds the [Google Chrome repo](http://www.ubuntuupdates.org/ppa/google_chrome)
 `remove` | Removes `unity-lens-shopping` and `gnome-orca`
 `settings` | Disables error reporting messages to Canonical by setting `enabled=0` in `/etc/default/apport`
 `terminator` | Change Terminator's default color scheme to Solarized Dark and applies Ubuntu Mono patched font (see `--fonts` to install)
@@ -302,7 +304,7 @@ Perform common fresh-install tasks that must be done while NOT running as root. 
  - Changes the window border buttons to be similar to Windows
  - Disables the Amazon and several other enabled-by-default Unity scopes
  - Sets a few favorites on Unity
- - Changes the shell to zsh
+ - Changes the shell to `zsh`
  - Clones my dotfiles repo on Bitbucket to the home directory of the current logged in user
 
 ####Usage
@@ -340,8 +342,7 @@ else
     # $newpath has the error message from path.sh
     echo $newpath
 fi
- ```
-
+```
 
 ####Usage
 

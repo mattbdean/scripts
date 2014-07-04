@@ -1,24 +1,30 @@
 {
-	"purpose": "Perform common fresh-install tasks that must be done while NOT running as root. It could be run as root, however, but the settings would not apply to the current user (what we actually want). This script:\\n - Changes the window border buttons to be similar to Windows\\n - Disables the Amazon and several other enabled-by-default Unity scopes\\n - Sets a few favorites on Unity\\n - Changes the shell to zsh\\n - Clones my dotfiles repo on Bitbucket to the home directory of the current logged in user",
-	"args": [],
-	"dependencies": [
-		{
-			"name": "gsettings",
-			"url": "https://developer.gnome.org/gio/2.39/gsettings-tool.html"
-		},
-		{
-			"name": "git",
-			"url": "http://git-scm.com/"
-		}
-	],
-	"exit_codes": {
-		"0": "Exited normally"
-	},
-	"requires_root": false,
-	"examples": [
-		{
-			"purpose": "Runs the settings",
-			"args": ""
-		}
-	]
+    "purpose": ["Perform common fresh-install tasks that must be done while NOT running as root. It could be run as root, ",
+                "however, but the settings would not apply to the current user (what we actually want). This script:\\n",
+                " - Changes the window border buttons to be similar to Windows\\n",
+                " - Disables the Amazon and several other enabled-by-default Unity scopes\\n",
+                " - Sets a few favorites on Unity\\n",
+                " - Changes the shell to `zsh`\\n",
+                " - Clones my dotfiles repo on Bitbucket to the home directory of the current logged in user"],
+    "args": [],
+    "dependencies": [
+        {
+            "name": "gsettings",
+            "url": "https://developer.gnome.org/gio/2.39/gsettings-tool.html"
+        },
+        {
+            "name": "git",
+            "url": "http://git-scm.com/"
+        }
+    ],
+    "exit_codes": {
+        "0": "Exited normally"
+    },
+    "requires_root": false,
+    "examples": [
+        {
+            "purpose": "Runs the settings",
+            "args": ""
+        }
+    ]
 }

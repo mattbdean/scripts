@@ -1,45 +1,45 @@
 {
-	"purpose": "Replaces the basename (the name of the file without its extension) with a randomly generated alphanumeric string 7 characters long",
-	"args": [
-		{
-			"name": "folder",
-			"description": "The folder whose contents will have scrambled basenames after the execution of this script",
-			"required": true,
-			"positional": true,
-			"option_names": []
-		},
-		{
-			"name": "force",
-			"description": "Skip the prompt asking the user to confirm their actions",
-			"required": false,
-			"positional": false,
-			"option_names": ["-f", "--force"]
-		},
-		{
-			"name": "quiet",
-			"description": "Suppresses output showing the new and old file names",
-			"required": false,
-			"positional": false,
-			"option_names": ["-q", "--quiet"]
-		},
-		{
-			"name": "simulate",
-			"description": "Don't actually rename the files",
-			"required": false,
-			"positional": false,
-			"option_names": ["-s", "--simulate"]
-		}
-	],
-	"dependencies": [],
-	"exit_codes": {
-		"0": "Exited normally",
-		"1": "The given directory does not exist"
-	},
-	"requires_root": false,
-	"examples": [
-		{
-			"purpose": "Scramble a folder called \"myfolder/\"",
-			"args": "myfolder/"
-		}
-	]
+    "purpose": "Replaces the basename (the name of the file without its extension) with a randomly generated alphanumeric string 7 characters long",
+    "args": [
+        {
+            "name": "folder",
+            "description": "The folder whose contents will have scrambled basenames after the execution of this script",
+            "required": true,
+            "positional": true,
+            "option_names": []
+        },
+        {
+            "name": "force",
+            "description": "Skip the prompt asking the user to confirm their actions",
+            "required": false,
+            "positional": false,
+            "option_names": ["-f", "--force"]
+        },
+        {
+            "name": "quiet",
+            "description": "Suppresses output showing the new and old file names",
+            "required": false,
+            "positional": false,
+            "option_names": ["-q", "--quiet"]
+        },
+        {
+            "name": "simulate",
+            "description": "Don't actually rename the files",
+            "required": false,
+            "positional": false,
+            "option_names": ["-s", "--simulate"]
+        }
+    ],
+    "dependencies": [],
+    "exit_codes": {
+        "0": "Exited normally",
+        "1": "The given directory does not exist"
+    },
+    "requires_root": false,
+    "examples": [
+        {
+            "purpose": "Scramble a folder called \"myfolder/\"",
+            "args": "myfolder/"
+        }
+    ]
 }
