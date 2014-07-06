@@ -1,5 +1,14 @@
 {
-    "purpose": "Backs up (gzips) certain directories",
+    "purpose": [
+        "Backs up (gzips) certain directories. If no directories are given, then the script will backup the following directories:\\n\\n",
+        "- `~/.config`\\n",
+        "- `~/projects`\\n",
+        "- `/etc/apache2/sites-available`\\n",
+        "- `/opt/android-studio`\\n",
+        "- `/opt/android-sdk`\\n",
+        "- `/opt/scripts`\\n",
+        "- `/var/www`\\n"
+    ],
     "args": [
         {
             "name": "archive",

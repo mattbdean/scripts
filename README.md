@@ -78,7 +78,16 @@ Code | Description
 
 ##[`backup.sh`](https://github.com/thatJavaNerd/scripts/blob/master/backup.sh)
 
-Backs up (gzips) certain directories
+Backs up (gzips) certain directories. If no directories are given, then the script will backup the following directories:
+
+- `~/.config`
+- `~/projects`
+- `/etc/apache2/sites-available`
+- `/opt/android-studio`
+- `/opt/android-sdk`
+- `/opt/scripts`
+- `/var/www`
+
 
 ####Usage
 
