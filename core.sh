@@ -15,7 +15,7 @@ perror() {
 ## Checks if a command is available to use. If it is, this script exits with 0, otherwise 1.
 ## $1: The command to check
 require() {
-	which "$1f" 2>/dev/null
+	which "$1" >/dev/null
 	echo $?
 }
 

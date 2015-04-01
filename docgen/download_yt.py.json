@@ -1,0 +1,37 @@
+{
+    "purpose": "This script downloads a video's audio as an MP3 and attempts to automatically apply ID3 tags to it",
+    "args": [
+        {
+            "name": "url",
+            "description": "the youtube-dl-compatible URL of the video to download",
+            "required": true,
+            "positional": true,
+            "option_names": []
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "python3",
+            "url": "https://www.python.org/"
+        },
+        {
+            "name": "youtube-dl",
+            "url": "https://rg3.github.io/youtube-dl/"
+        },
+        {
+            "name": "stagger",
+            "url": "https://pypi.python.org/pypi/stagger/"
+        }
+    ],
+    "exit_codes": {
+        "0": "Exited normally",
+        "1": "Unexpted exit"
+    },
+    "requires_root": false,
+    "examples": [
+        {
+            "purpose": "Downloads this video and tags the artist as \"Teminite\" and the title as \"Goin' In\"",
+            "args": "https://www.youtube.com/watch?v=NdJY_IXDD3M"
+        }
+    ]
+}

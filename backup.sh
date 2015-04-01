@@ -41,7 +41,7 @@ fi
 if [ ${#directories[@]} -eq 0 ]; then
 	# directories to back up is empty. Use defaults.
 	home=$(echo ~)
-	directories=("/opt/scripts" "/etc/apache2/sites-available" "/var/www" "$home/.config" "/opt/android-studio" "/opt/android-sdk" "$home/projects")
+	directories=("/opt/scripts" "/etc/apache2/sites-available" "/var/www" "$home/.config" "/opt/android-studio" "$home/projects")
 fi
 
 file_list=
@@ -56,7 +56,7 @@ if [[ "$restore" == "false" ]]; then
 		# Directory exists, add it to the file list
 		file_list="$file_list $(readlink -f "$dir")"
 	done
-	time tar -czf "$archive" $file_list # Purposefully don't put $file_list in quotes in order for tar to treat it as multiple args
+	time tar -cjf "$archive" $file_list # Purposefully don't put $file_list in quotes in order for tar to treat it as multiple args
 	du -b "$archive" -h
 else
 	#for dir in "$backup_location"; do

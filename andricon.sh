@@ -8,6 +8,7 @@ base_dir="$2"
 base_dir=${base_dir:-.} # Default value of the current directory
 base_dir=${base_dir%/} # Remove leading forward slash
 
+echo $(require convert)
 # Need imagemagick
 if [ $(require convert) -eq 1 ]; then
 	perror "This script requires imagemagick"
@@ -22,6 +23,7 @@ fi
 if [ ! -d "$base_dir" ]; then
 	perror "\"$base_dir\" does not exist"
 	exit 3
+fi
 
 declare -A SIZES=([mdpi]=1 [hdpi]=1.5 [xhdpi]=2 [xxhdpi]=3)
 

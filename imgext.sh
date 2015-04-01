@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $(dirname $(readlink -f $0))/core.sh
+
 dir="$1"
 dir=${dir:-.} # Default value of the current directory
 dir=${dir%/} # Remove leading forward slash

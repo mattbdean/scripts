@@ -76,50 +76,6 @@ Code | Description
 
 - [`extr_pdf_imgs.sh`](https://github.com/thatJavaNerd/scripts/blob/master/extr_pdf_imgs.sh)
 
-##[`backup.sh`](https://github.com/thatJavaNerd/scripts/blob/master/backup.sh)
-
-Backs up (gzips) certain directories. If no directories are given, then the script will backup the following directories:
-
-- `~/.config`
-- `~/projects`
-- `/etc/apache2/sites-available`
-- `/opt/android-studio`
-- `/opt/android-sdk`
-- `/opt/scripts`
-- `/var/www`
-
-
-####Usage
-
-`$ backup.sh <archive> <directory> [directories...] [-r | --restore]`
-
-####Arguments
-
-Name | Description
----- | -----------
-`archive` | The file to create and gzip the directories into
-`directory` | A directory to add to the archive
-`directories...` | More directories to add to the archive
-`restore` | Whether to restore the files instead of back them up (not currently functionng)
-
-####Examples
-
-```shell
-# Backup the default list of directories to a file called "backup.tar.gz"
-user@hostname:~$ backup.sh backup.tar.gz
-# Backup the directories "dir1", "dir2", and "dir3" to a file called "backup.tar.gz"
-user@hostname:~$ backup.sh backup.tar.gz dir1/ dir2/ dir3/
-# (incubating) Restore the backup file "backup.tar.gz"
-user@hostname:~$ backup.sh backup.tar.gz --restore
-```
-####Exit codes
-
-Code | Description
----- | -----------
-`0` | Exited normally
-`1` | If a backup location was not specified
-
-
 ##[`cha2site.sh`](https://github.com/thatJavaNerd/scripts/blob/master/cha2site.sh)
 
 Change the currently enabled Apache 2 virtual site. Disables all currently enabled sites, enables the given one, and reloads the `apache2` service.
@@ -175,6 +131,39 @@ Code | Description
 ####Dependencies
 
 - [`python3`](https://www.python.org/)
+
+##[`download_yt.py`](https://github.com/thatJavaNerd/scripts/blob/master/download_yt.py)
+
+This script downloads a video's audio as an MP3 and attempts to automatically apply ID3 tags to it
+
+####Usage
+
+`$ download_yt.py <url>`
+
+####Arguments
+
+Name | Description
+---- | -----------
+`url` | the youtube-dl-compatible URL of the video to download
+
+####Examples
+
+```shell
+# Downloads this video and tags the artist as "Teminite" and the title as "Goin' In"
+user@hostname:~$ download_yt.py https://www.youtube.com/watch?v=NdJY_IXDD3M
+```
+####Exit codes
+
+Code | Description
+---- | -----------
+`0` | Exited normally
+`1` | Unexpted exit
+
+####Dependencies
+
+- [`python3`](https://www.python.org/)
+- [`youtube-dl`](https://rg3.github.io/youtube-dl/)
+- [`stagger`](https://pypi.python.org/pypi/stagger/)
 
 ##[`extr_pdf_imgs.sh`](https://github.com/thatJavaNerd/scripts/blob/master/extr_pdf_imgs.sh)
 
