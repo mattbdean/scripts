@@ -33,7 +33,7 @@ def main(url):
 
     # List of characters that separate a name and title. An empty string is
     # given as a fallback so that the title is just the basename of the file.
-    separators = [": ", " - ", ""]
+    separators = [": ", " - "]
     os.chdir(out_dir)
     for f in glob("*.mp3"):
         apply_tags(f, separators)
@@ -45,6 +45,7 @@ def apply_tags(fname, separators):
     # Assume the title is in the format "$author $separator $title"
     title = bname
     artist = ""
+
     for sep in separators:
         if sep in bname:
             parts = bname.split(sep)
