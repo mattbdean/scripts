@@ -10,5 +10,5 @@ if [ $(require ffmpeg) -eq 1 ]; then
 	exit 2
 fi
 
-youtube-dl "$1" --extract-audio --audio-format wav
+youtube-dl "$1" --extract-audio --audio-format mp3
 
